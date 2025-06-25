@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pashmina Jersey Pet Instan - Hijab Segitiga Premium</title>
+    <title>Pashmina Jersey Pet Instan - Jilbab Segitiga Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9f9f9;
+            background-color: #f9f9f7;
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.85);
@@ -17,228 +18,284 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.18);
         }
-        .gold-accent {
-            color: #d4af37;
+        .gold-text {
+            background: linear-gradient(135deg, #d4af37 0%, #b8972f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .bg-teal {
-            background-color: #2b6777;
-        }
-        .text-teal {
-            color: #2b6777;
-        }
-        .border-gold {
+        .gold-border {
             border-color: #d4af37;
         }
-        .slide {
-            transition: opacity 0.5s ease-in-out;
-        }
-        .slide.active {
-            opacity: 1;
-        }
-        .slide:not(.active) {
-            opacity: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
+        .teal-bg {
+            background-color: #2b6777;
         }
         .color-thumbnail {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
-        .color-thumbnail:hover {
+        .color-thumbnail:hover, .color-thumbnail.active {
             transform: scale(1.05);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: #d4af37;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        .color-thumbnail.selected {
-            outline: 3px solid #d4af37;
-            outline-offset: 2px;
+        .product-slider {
+            scroll-snap-type: x mandatory;
         }
-        .fade-in {
-            animation: fadeIn 0.5s ease-in forwards;
+        .product-slider img {
+            scroll-snap-align: start;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(43, 103, 119, 0.1) 100%);
+            border-radius: 50%;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
 <body class="text-gray-800">
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <h1 class="text-2xl font-bold gold-accent">Pashmina<span class="text-teal">Jersey</span></h1>
+                <div class="w-10 h-10 rounded-full teal-bg flex items-center justify-center mr-2">
+                    <i class="fas fa-hijab text-white text-xl"></i>
+                </div>
+                <h1 class="text-xl font-bold gold-text">Pashmina Jersey</h1>
             </div>
-            <nav class="hidden md:block">
-                <ul class="flex space-x-8">
-                    <li><a href="#product" class="hover:text-teal transition">Produk</a></li>
-                    <li><a href="#features" class="hover:text-teal transition">Fitur</a></li>
-                    <li><a href="#colors" class="hover:text-teal transition">Warna</a></li>
-                    <li><a href="#order" class="hover:text-teal transition">Pesan</a></li>
-                </ul>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#produk" class="font-medium hover:text-teal-700 transition">Produk</a>
+                <a href="#warna" class="font-medium hover:text-teal-700 transition">Varian Warna</a>
+                <a href="#spesifikasi" class="font-medium hover:text-teal-700 transition">Spesifikasi</a>
+                <a href="#pesan" class="font-medium hover:text-teal-700 transition">Pesan Sekarang</a>
             </nav>
-            <button class="md:hidden focus:outline-none" id="mobile-menu-button">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
+            <button class="md:hidden text-gray-600">
+                <i class="fas fa-bars text-xl"></i>
             </button>
-        </div>
-        <div class="md:hidden hidden bg-white w-full py-2 px-4 shadow-md" id="mobile-menu">
-            <ul class="space-y-2">
-                <li><a href="#product" class="block py-2 hover:text-teal transition">Produk</a></li>
-                <li><a href="#features" class="block py-2 hover:text-teal transition">Fitur</a></li>
-                <li><a href="#colors" class="block py-2 hover:text-teal transition">Warna</a></li>
-                <li><a href="#order" class="block py-2 hover:text-teal transition">Pesan</a></li>
-            </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-r from-teal-100 to-gray-50 py-16 md:py-24">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Pashmina Jersey Pet Instan</h2>
-                <p class="text-lg mb-6 text-gray-600">Hijab Segitiga Premium dengan Bahan Nyaman Seharian</p>
-                <div class="flex items-center mb-6">
-                    <div class="flex mr-4">
-                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+    <section class="relative overflow-hidden py-12 md:py-20">
+        <div class="absolute inset-0 bg-gradient-to-r from-teal-50 to-white opacity-90"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+                        <span class="gold-text">Pashmina Jersey Pet Instan</span><br>
+                        Jilbab Segitiga Premium
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6">Langsung pakai tanpa ribet! Bahan jersey premium yang adem, lentur, & jatuh cantik.</p>
+                    <div class="flex items-center mb-6">
+                        <div class="text-2xl font-bold text-teal-700">Rp165.000</div>
+                        <div class="ml-4 px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">BESTSELLER</div>
                     </div>
-                    <span class="text-gray-600">500+ ulasan</span>
-                </div>
-                <div class="mb-6">
-                    <span class="text-3xl font-bold gold-accent">Rp 165.000</span>
-                </div>
-                <a href="#order" class="bg-teal hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 inline-flex items-center">
-                    Pesan Sekarang
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
-                </a>
-            </div>
-            <div class="md:w-1/2 relative">
-                <div class="relative h-80 md:h-96 overflow-hidden rounded-lg shadow-xl">
-                    <!-- Slider Images -->
-                    <div class="slide active h-full w-full">
-                        <img id="main-image" src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-llnah0rfxqt8e3.webp" alt="Pashmina Jersey Pet Instan" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide h-full w-full">
-                        <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98w-lmenh94r0xakc4.webp" alt="Pashmina Jersey Pet Instan" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide h-full w-full">
-                        <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lmenh94qy45oa8.webp" alt="Pashmina Jersey Pet Instan" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide h-full w-full">
-                        <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98s-lmenh94qvb0sda.webp" alt="Pashmina Jersey Pet Instan" class="w-full h-full object-cover">
+                    <a href="#pesan" class="inline-block bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-yellow-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105">
+                        <i class="fas fa-shopping-bag mr-2"></i> Pesan Sekarang
+                    </a>
+                    <div class="mt-4 flex items-center text-sm text-gray-500">
+                        <i class="fas fa-check-circle text-teal-500 mr-2"></i>
+                        <span>Gratis ongkir untuk pembelian di atas Rp300.000</span>
                     </div>
                 </div>
-                <div class="flex justify-center mt-4 space-x-2">
-                    <button class="slider-dot w-3 h-3 rounded-full bg-gray-300 focus:outline-none" data-index="0"></button>
-                    <button class="slider-dot w-3 h-3 rounded-full bg-gray-300 focus:outline-none" data-index="1"></button>
-                    <button class="slider-dot w-3 h-3 rounded-full bg-gray-300 focus:outline-none" data-index="2"></button>
-                    <button class="slider-dot w-3 h-3 rounded-full bg-gray-300 focus:outline-none" data-index="3"></button>
+                <div class="md:w-1/2 relative">
+                    <div class="relative overflow-hidden rounded-xl shadow-2xl floating">
+                        <div class="product-slider flex overflow-x-auto snap-x snap-mandatory h-96 md:h-[500px] w-full rounded-xl" style="scrollbar-width: none;">
+                            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-llnah0rfxqt8e3.webp" alt="Pashmina Jersey Pet Instan" class="w-full h-full object-cover flex-shrink-0">                            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lmenh94qy45oa8.webp" alt="Pashmina Jersey Pet Instan" class="w-full h-full object-cover flex-shrink-0">
+                            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lmenh94qy45oa8.webp" alt="Pashmina Jersey Pet Instan" class="w-full h-full object-cover flex-shrink-0">
+                            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98w-lmenh94r0xakc4.webp" alt="Pashmina Jersey Pet Instan" class="w-full h-full object-cover flex-shrink-0">
+                        </div>
+                        <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                            <button class="w-3 h-3 rounded-full bg-white opacity-50"></button>
+                            <button class="w-3 h-3 rounded-full bg-white opacity-50"></button>
+                            <button class="w-3 h-3 rounded-full bg-white opacity-50"></button>
+                            <button class="w-3 h-3 rounded-full bg-white opacity-50"></button>
+                        </div>
+                    </div>
+                    <div class="absolute -top-4 -right-4 bg-white rounded-full p-3 shadow-lg hidden md:block">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+                            <span class="text-white font-bold text-sm text-center">BEST<br>SELLER</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Product Details -->
-    <section id="product" class="py-16 bg-white">
+    <!-- Product Features -->
+    <section class="py-12 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Pashmina Jersey Pet Instan</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">"Siap tampil cantik dalam hitungan detik!" Pashmina Jersey Pet Instan – nggak perlu jarum, nggak perlu ribet!</p>
-            </div>
-            
-            <div class="flex flex-col md:flex-row gap-8">
-                <div class="md:w-1/2">
-                    <div class="glass-card rounded-lg p-6 mb-8">
-                        <h3 class="text-xl font-semibold mb-4 text-teal">Spesifikasi Produk</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-teal mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span><strong class="font-medium">Bahan:</strong> Jersey premium</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-teal mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span><strong class="font-medium">Ukuran:</strong> Panjang depan 90 cm, panjang belakang 85 cm</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-teal mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span><strong class="font-medium">Berat:</strong> 200 gram</span>
-                            </li>
-                        </ul>
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Kenapa Memilih <span class="gold-text">Pashmina Jersey Pet Instan?</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="feature-icon mx-auto mb-4">
+                        <i class="fas fa-fan text-2xl text-teal-600"></i>
                     </div>
-                    
-                    <div class="glass-card rounded-lg p-6">
-                        <h3 class="text-xl font-semibold mb-4 text-teal">Keunggulan Produk</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-teal mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span>Bahan jersey premium yang adem & nggak gampang kusut</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-teal mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span>Cocok untuk harian & formal</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-teal mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span>Nyaman seharian, tampil stylish tanpa effort</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-teal mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span>Desain praktis tanpa perlu jarum</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Bahan Premium</h3>
+                    <p class="text-gray-600">Jersey premium yang adem, lentur, dan jatuh cantik untuk kenyamanan maksimal.</p>
                 </div>
-                
-                <div class="md:w-1/2">
-                    <div class="bg-gray-50 rounded-lg p-6 h-full">
-                        <h3 class="text-xl font-semibold mb-4 text-teal">Deskripsi Lengkap</h3>
-                        <p class="mb-4">Pashmina Jersey Pet Instan adalah solusi praktis untuk muslimah yang ingin tampil stylish tanpa ribet. Dengan bahan jersey premium yang adem dan tidak mudah kusut, hijab ini cocok digunakan seharian baik untuk aktivitas sehari-hari maupun acara formal.</p>
-                        <p class="mb-4">Desainnya yang instan membuat Anda tidak perlu repot menggunakan jarum atau aksesoris tambahan. Cukup pakai dan Anda siap tampil cantik dalam hitungan detik!</p>
-                        <p class="mb-4">Dengan panjang depan 90 cm dan belakang 85 cm, hijab ini memberikan coverage yang sempurna tanpa mengurangi kenyamanan. Beratnya yang ringan (200 gram) membuat Anda nyaman memakainya seharian.</p>
-                        <p>Tersedia dalam berbagai pilihan warna yang trendy dan mudah dipadukan dengan berbagai outfit. Pashmina Jersey Pet Instan - karena gaya itu harus praktis!</p>
+                <div class="text-center">
+                    <div class="feature-icon mx-auto mb-4">
+                        <i class="fas fa-heart text-2xl text-teal-600"></i>
                     </div>
+                    <h3 class="text-xl font-semibold mb-2">Pet Nyaman</h3>
+                    <p class="text-gray-600">Desain pet yang nyaman di dahi dan anti lecek, tetap rapi sepanjang hari.</p>
+                </div>
+                <div class="text-center">
+                    <div class="feature-icon mx-auto mb-4">
+                        <i class="fas fa-star text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Multifungsi</h3>
+                    <p class="text-gray-600">Cocok untuk harian, kerja, ngaji, sampai hangout. Simple tapi tetap anggun.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Color Variants -->
-    <section id="colors" class="py-16 bg-gray-50">
+    <section id="warna" class="py-12 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Pilihan Warna</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Pilih warna favorit Anda dari berbagai pilihan yang tersedia</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">Pilihan <span class="gold-text">Warna Elegan</span></h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Tersedia dalam berbagai pilihan warna yang stylish dan mudah dipadukan dengan outfit favorit Anda.</p>
+            
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4">
+                <!-- Color variants will be added here -->
+                <div class="color-thumbnail rounded-lg overflow-hidden cursor-pointer active">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasl-m3np4d4bdp3s7b.webp" alt="Hitam" class="w-full h-24 object-cover">
+                    <div class="p-2 text-center bg-white">
+                        <span class="text-sm font-medium">Hitam</span>
+                    </div>
+                </div>
+                <div class="color-thumbnail rounded-lg overflow-hidden cursor-pointer">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasf-m3np4d4bf3o8bd.webp" alt="Nevy" class="w-full h-24 object-cover">
+                    <div class="p-2 text-center bg-white">
+                        <span class="text-sm font-medium">Nevy</span>
+                    </div>
+                </div>
+                <div class="color-thumbnail rounded-lg overflow-hidden cursor-pointer">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasl-m3np4d4bhwt458.webp" alt="Dusty" class="w-full h-24 object-cover">
+                    <div class="p-2 text-center bg-white">
+                        <span class="text-sm font-medium">Dusty</span>
+                    </div>
+                </div>
+                <div class="color-thumbnail rounded-lg overflow-hidden cursor-pointer">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7ras9-m3np4d4bjbdka1.webp" alt="Khaki" class="w-full h-24 object-cover">
+                    <div class="p-2 text-center bg-white">
+                        <span class="text-sm font-medium">Khaki</span>
+                    </div>
+                </div>
+                <div class="color-thumbnail rounded-lg overflow-hidden cursor-pointer">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rash-m3np4d4bkpy0fa.webp" alt="Lilac" class="w-full h-24 object-cover">
+                    <div class="p-2 text-center bg-white">
+                        <span class="text-sm font-medium">Lilac</span>
+                    </div>
+                </div>
+                <div class="color-thumbnail rounded-lg overflow-hidden cursor-pointer">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasj-m3np4d4bm4ig53.webp" alt="Ash" class="w-full h-24 object-cover">
+                    <div class="p-2 text-center bg-white">
+                        <span class="text-sm font-medium">Ash</span>
+                    </div>
+                </div>
+                <div class="color-thumbnail rounded-lg overflow-hidden cursor-pointer">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasl-m3np4d4boxncb6.webp" alt="Millo" class="w-full h-24 object-cover">
+                    <div class="p-2 text-center bg-white">
+                        <span class="text-sm font-medium">Millo</span>
+                    </div>
+                </div>
+                <div class="color-thumbnail rounded-lg overflow-hidden cursor-pointer">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasi-m3np4d4bqc7se1.webp" alt="Silver" class="w-full h-24 object-cover">
+                    <div class="p-2 text-center bg-white">
+                        <span class="text-sm font-medium">Silver</span>
+                    </div>
+                </div>
+                <div class="color-thumbnail rounded-lg overflow-hidden cursor-pointer">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7ras8-m3np4d4brqs8de.webp" alt="Abu Tua" class="w-full h-24 object-cover">
+                    <div class="p-2 text-center bg-white">
+                        <span class="text-sm font-medium">Abu Tua</span>
+                    </div>
+                </div>
+                <div class="color-thumbnail rounded-lg overflow-hidden cursor-pointer">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasm-m3npcl8s1cyi29.webp" alt="Kubus" class="w-full h-24 object-cover">
+                    <div class="p-2 text-center bg-white">
+                        <span class="text-sm font-medium">Kubus</span>
+                    </div>
+                </div>
             </div>
             
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <!-- Color variants will be added here by JavaScript -->
+            <div class="mt-8 text-center">
+                <button class="text-teal-600 font-medium hover:text-teal-800 transition flex items-center justify-center mx-auto">
+                    Lihat semua 20 warna <i class="fas fa-chevron-down ml-2"></i>
+                </button>
             </div>
-            
-            <div class="mt-12 text-center">
-                <p class="text-gray-600 mb-4">Klik pada warna untuk melihat tampilan produk</p>
-                <div class="flex justify-center">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-2xl">
-                        <img id="color-display-image" src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-llnah0rfxqt8e3.webp" alt="Selected Color" class="w-full h-64 md:h-80 object-cover">
+        </div>
+    </section>
+
+    <!-- Product Details -->
+    <section id="spesifikasi" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-llnah0rfxqt8e3.webp" alt="Detail Pashmina" class="rounded-xl shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6">Spesifikasi <span class="gold-text">Produk</span></h2>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-2 flex items-center">
+                            <i class="fas fa-ruler-combined text-teal-600 mr-2"></i> Ukuran
+                        </h3>
+                        <ul class="text-gray-600 space-y-1">
+                            <li>Panjang depan: 90 cm</li>
+                            <li>Panjang belakang: 85 cm</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-2 flex items-center">
+                            <i class="fas fa-weight text-teal-600 mr-2"></i> Berat
+                        </h3>
+                        <p class="text-gray-600">200 gram</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-2 flex items-center">
+                            <i class="fas fa-tshirt text-teal-600 mr-2"></i> Bahan
+                        </h3>
+                        <p class="text-gray-600">Jersey premium yang adem, lentur, dan jatuh cantik</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2 flex items-center">
+                            <i class="fas fa-check-circle text-teal-600 mr-2"></i> Keunggulan
+                        </h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1 mr-2"></i>
+                                <span>Pet nyaman di dahi, anti lecek</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1 mr-2"></i>
+                                <span>Langsung pakai tanpa ribet</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1 mr-2"></i>
+                                <span>Cocok untuk berbagai aktivitas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1 mr-2"></i>
+                                <span>Tampil simple tapi tetap anggun</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -246,235 +303,315 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="py-16 bg-white">
+    <section class="py-12 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Apa Kata Mereka?</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Testimoni dari pelanggan yang sudah menggunakan Pashmina Jersey Pet Instan</p>
-            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Apa Kata <span class="gold-text">Pelanggan Kami?</span></h2>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card rounded-lg p-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Customer" class="w-full h-full object-cover">
+                        <div class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-teal-600"></i>
                         </div>
                         <div>
-                            <h4 class="font-semibold">Sarah N.</h4>
-                            <div class="flex">
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <h4 class="font-medium">Sarah N.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600">"Sangat nyaman dipakai seharian! Bahan adem dan tidak mudah kusut. Aku sudah beli 3 warna berbeda."</p>
+                    <p class="text-gray-600">"Bahan sangat nyaman dipakai seharian, tidak gerah dan jatuhnya cantik. Sudah beli 3 warna berbeda!"</p>
                 </div>
                 
-                <div class="glass-card rounded-lg p-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Customer" class="w-full h-full object-cover">
+                        <div class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-teal-600"></i>
                         </div>
                         <div>
-                            <h4 class="font-semibold">Dina M.</h4>
-                            <div class="flex">
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <h4 class="font-medium">Dian M.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600">"Praktis banget! Cocok untuk yang sering buru-buru seperti saya. Desainnya juga elegan untuk acara formal."</p>
+                    <p class="text-gray-600">"Pet-nya benar-benar nyaman, tidak mudah lepas dan bentuknya tetap rapi meski dipakai beraktivitas."</p>
                 </div>
                 
-                <div class="glass-card rounded-lg p-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer" class="w-full h-full object-cover">
+                        <div class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-teal-600"></i>
                         </div>
                         <div>
-                            <h4 class="font-semibold">Rani P.</h4>
-                            <div class="flex">
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <h4 class="font-medium">Rina A.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600">"Warnanya persis seperti di foto. Kualitas jahitannya juga rapi. Sudah beli 5 warna berbeda dan semuanya bagus!"</p>
+                    <p class="text-gray-600">"Warnanya persis seperti di foto, bahannya premium dan packingnya rapi. Pengiriman juga cepat."</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Order Section -->
-    <section id="order" class="py-16 bg-teal text-white">
+    <section id="pesan" class="py-12 teal-bg text-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Pesan Sekarang</h2>
-                <p class="text-lg max-w-2xl mx-auto">Isi form berikut untuk memesan Pashmina Jersey Pet Instan</p>
-            </div>
-            
-            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
-                <div class="bg-teal-700 p-6 text-center">
-                    <h3 class="text-xl font-bold">Pashmina Jersey Pet Instan</h3>
-                    <p class="text-teal-100">Rp 165.000</p>
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Pesan <span class="gold-text">Pashmina Jersey Pet Instan</span> Sekarang</h2>
+                    <p class="text-teal-100 max-w-2xl mx-auto">Isi form berikut untuk memesan produk kami. Kami akan menghubungi Anda untuk konfirmasi pesanan.</p>
                 </div>
                 
-                <div class="p-6">
-                    <!-- OrderOnline Embed Code -->
-                    <div class="ooef">
-                        <form class="orderonline-embed-form" data-username="vina" data-product-slug="pashminajerseypetinstan" data-product-id="662650252b1971f27b08affa" id="oo-embed-form-pashminajerseypetinstan-8725" data-origin="orderonline">
-                            <div class="ooef-loader"><style>.ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}@keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}@-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}.ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}.ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}.ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}@-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}</style><div aria-live="polite" role="status"><div>Loading...</div></div></div>
-                        </form>
-                    </div>
-                    <script>
-                        if (typeof xLogError != 'function') {
-                            var xLogError = function (error) {
-                                var req = new XMLHttpRequest();
-                                var payload = JSON.stringify({
-                                    url: document.location.href,
-                                    line: error.line,
-                                    stack: error.stack
-                                });
-                                var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error';
-                                req.open('POST', 'https://api.orderonline.id/log', true);
-                                req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                                req.send(params);
-                            };
-                        }
-                        try {
-                            if (typeof xEmbedScript != 'function') {
-                                var xEmbedScript = function () {
-                                    !function(w, d, e, v, id, t, s) {
-                                        if (d.getElementById(id)) return;
-                                        t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
-                                        s = d.getElementsByTagName(e)[0];
-                                        s.parentNode.insertBefore(t, s);
-                                    }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.4', 'oo-embed-js');
-                                };
-                            }
-                            if (typeof xEmbedInit != 'function') {
-                                var xEmbedInit = function (w, n) {
-                                    if (w.ooe) return;
-                                    n = w.ooe = function() {
-                                        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                <!-- Order Form -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-gradient-to-b from-yellow-600 to-yellow-700 p-6 flex flex-col justify-center">
+                            <div class="text-center mb-6">
+                                <div class="text-3xl font-bold mb-2">Rp165.000</div>
+                                <div class="text-yellow-100 text-sm">Harga Normal</div>
+                            </div>
+                            <ul class="space-y-3 text-yellow-100 text-sm">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                    <span>Bahan jersey premium</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                    <span>Pet nyaman anti lecek</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                    <span>20 pilihan warna</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                    <span>Garansi 100% kepuasan</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="md:w-2/3 p-6">
+                            <div class="ooef">
+                                <form class="orderonline-embed-form" data-username="vina" data-product-slug="pashminajerseypetinstan" data-product-id="662650252b1971f27b08affa" id="oo-embed-form-pashminajerseypetinstan-3812" data-origin="orderonline">
+                                    <div class="ooef-loader"><style>.ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}@keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}@-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}.ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}.ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}.ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}@-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}</style><div aria-live="polite" role="status"><div>Loading...</div></div></div>
+                                </form>
+                            </div>
+                            <script>
+                                if (typeof xLogError != 'function') {
+                                    var xLogError = function (error) {
+                                        var req = new XMLHttpRequest();
+                                        var payload = JSON.stringify({
+                                            url: document.location.href,
+                                            line: error.line,
+                                            stack: error.stack
+                                        });
+                                        var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error';
+                                        req.open('POST', 'https://api.orderonline.id/log', true);
+                                        req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                                        req.send(params);
                                     };
-                                    if (!w._ooe) w._ooe = n;
-                                    n.push = n;n.loaded = !0;n.version = '8.0.4';n.queue = [];
-                                };
-                            }
-                            xEmbedInit(window);
-                            ooe('setup', 'redirect', 'https://vina.orderonline.id');
-                            ooe('init', '5f17e00168e4c04c273e9925', '662650252b1971f27b08affa', null, 'oo-embed-form-pashminajerseypetinstan-8725', {"mode":"page","action":"Klik untuk pemesanan","title":"Form Pemesanan","triggerPixel":true,"triggerGtm":false});
-                            if (!window.jQuery) {
-                                !function(w, d, e, v, id, t, s) {
-                                    if (d.getElementById(id)) return;
-                                    t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
-                                    t.addEventListener('load', xEmbedScript);
-                                    s = d.getElementsByTagName(e)[0];
-                                    s.parentNode.insertBefore(t, s);
-                                }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery');
-                            } else {
-                                xEmbedScript();
-                            }
-                        } catch (e) {
-                            xLogError(e);
-                            throw e;
-                        }
-                    </script>
-                    <!-- End OrderOnline Embed Code -->
+                                }
+                                try {
+                                    if (typeof xEmbedScript != 'function') {
+                                        var xEmbedScript = function () {
+                                            !function(w, d, e, v, id, t, s) {
+                                                if (d.getElementById(id)) return;
+                                                t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                                s = d.getElementsByTagName(e)[0];
+                                                s.parentNode.insertBefore(t, s);
+                                            }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.4', 'oo-embed-js');
+                                        };
+                                    }
+                                    if (typeof xEmbedInit != 'function') {
+                                        var xEmbedInit = function (w, n) {
+                                            if (w.ooe) return;
+                                            n = w.ooe = function() {
+                                                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                                            };
+                                            if (!w._ooe) w._ooe = n;
+                                            n.push = n;n.loaded = !0;n.version = '8.0.4';n.queue = [];
+                                        };
+                                    }
+                                    xEmbedInit(window);
+                                    ooe('setup', 'redirect', 'https://vina.orderonline.id');
+                                    ooe('init', '5f17e00168e4c04c273e9925', '662650252b1971f27b08affa', null, 'oo-embed-form-pashminajerseypetinstan-3812', {"mode":"page","action":"Klik untuk pemesanan","title":"Form Pemesanan","triggerPixel":true,"triggerGtm":false});
+                                    if (!window.jQuery) {
+                                        !function(w, d, e, v, id, t, s) {
+                                            if (d.getElementById(id)) return;
+                                            t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                            t.addEventListener('load', xEmbedScript);
+                                            s = d.getElementsByTagName(e)[0];
+                                            s.parentNode.insertBefore(t, s);
+                                        }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery');
+                                    } else {
+                                        xEmbedScript();
+                                    }
+                                } catch (e) {
+                                    xLogError(e);
+                                    throw e;
+                                }
+                            </script>
+                            
+                            <div class="mt-6 flex items-center text-sm text-gray-500">
+                                <i class="fas fa-lock text-teal-600 mr-2"></i>
+                                <span>Data Anda aman dan tidak akan disalahgunakan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Pertanyaan <span class="gold-text">Yang Sering Diajukan</span></h2>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="font-medium text-left">Bagaimana cara memilih ukuran yang tepat?</span>
+                        <i class="fas fa-chevron-down text-teal-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 text-gray-600">
+                        <p>Pashmina Jersey Pet Instan kami memiliki ukuran universal yang cocok untuk berbagai bentuk wajah. Panjang depan 90 cm dan belakang 85 cm dirancang untuk memberikan kenyamanan maksimal.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="font-medium text-left">Apakah bahan jersey premium mudah kusut?</span>
+                        <i class="fas fa-chevron-down text-teal-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 text-gray-600">
+                        <p>Bahan jersey premium kami memiliki elastisitas yang baik sehingga tidak mudah kusut. Jika terlipat dalam waktu lama, cukup gantung sebentar atau semprot dengan air lalu biarkan mengering sendiri.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="font-medium text-left">Berapa lama waktu pengiriman?</span>
+                        <i class="fas fa-chevron-down text-teal-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 text-gray-600">
+                        <p>Waktu pengiriman tergantung lokasi Anda. Untuk Jabodetabek biasanya 1-2 hari kerja, luar Jawa 3-5 hari kerja, dan luar pulau Jawa 4-7 hari kerja. Kami menggunakan jasa pengiriman terpercaya.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="font-medium text-left">Apakah ada garansi untuk produk ini?</span>
+                        <i class="fas fa-chevron-down text-teal-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 text-gray-600">
+                        <p>Kami memberikan garansi 100% kepuasan. Jika ada masalah dengan produk Anda (cacat produksi, warna tidak sesuai, dll), Anda dapat mengembalikan dalam waktu 7 hari setelah penerimaan barang.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Trust Badges -->
-    <section class="py-12 bg-gray-100">
+    <section class="py-8 bg-gray-100">
         <div class="container mx-auto px-4">
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                <div class="flex flex-col items-center">
-                    <svg class="w-12 h-12 text-teal mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                    </svg>
-                    <span class="font-medium">100% Original</span>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12">
+                <div class="flex items-center">
+                    <i class="fas fa-shield-alt text-3xl text-teal-600 mr-3"></i>
+                    <div>
+                        <div class="font-bold">Garansi 100%</div>
+                        <div class="text-sm text-gray-600">Kepuasan Pelanggan</div>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center">
-                    <svg class="w-12 h-12 text-teal mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                    </svg>
-                    <span class="font-medium">Gratis Ongkir</span>
+                <div class="flex items-center">
+                    <i class="fas fa-truck text-3xl text-teal-600 mr-3"></i>
+                    <div>
+                        <div class="font-bold">Pengiriman</div>
+                        <div class="text-sm text-gray-600">Cepat & Aman</div>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center">
-                    <svg class="w-12 h-12 text-teal mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <span class="font-medium">Garansi Uang Kembali</span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <svg class="w-12 h-12 text-teal mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
-                    </svg>
-                    <span class="font-medium">Pengembalian Mudah</span>
+                <div class="flex items-center">
+                    <i class="fas fa-headset text-3xl text-teal-600 mr-3"></i>
+                    <div>
+                        <div class="font-bold">Layanan Pelanggan</div>
+                        <div class="text-sm text-gray-600">Siap Membantu 24/7</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+   
 
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/6281234567890" class="bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
 
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        // Color selection
+        const colorThumbnails = document.querySelectorAll('.color-thumbnail');
+        colorThumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                colorThumbnails.forEach(t => t.classList.remove('active'));
+                thumbnail.classList.add('active');
+            });
         });
 
-        // Image slider functionality
+        // FAQ toggle
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Product slider navigation
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.slider-dot');
+        const slides = document.querySelectorAll('.product-slider img');
+        const dots = document.querySelectorAll('.product-slider + div button');
         
         function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('bg-teal', 'w-4'));
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(${100 * (i - index)}%)`;
+            });
             
-            slides[index].classList.add('active');
-            dots[index].classList.add('bg-teal', 'w-4');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('opacity-50', i !== index);
+            });
+            
             currentSlide = index;
         }
         
-        dots.forEach(dot => {
-            dot.addEventListener('click', function() {
-                const slideIndex = parseInt(this.getAttribute('data-index'));
-                showSlide(slideIndex);
-            });
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
         });
         
-        // Auto slide change
+        // Auto slide
         setInterval(() => {
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         }, 5000);
-        
-        // Color variants
-        const colorVariants = [
-            { name: "Hitam", thumbnail: "https://down-id.img.susercontent.com/file/id-11134207-7rasl-m3np4d4bdp3s7b.webp", main: "https://down-id.img.susercontent.com/file/id-11134207-7rasl-m3np4d4bdp3s7b.webp" },
-            { name: "Nevy", thumbnail: "https://down-id.img.susercontent.com/file/id-11134207-7rasf-m3np4d4bf3o8bd.webp", main: "https://down-id.img.susercontent.com/file/id-11134207-7rasf-m3np4d4bf3o8bd.webp" },
-            { name: "Dusty", thumbnail: "https://down-id.img.susercontent.com/file/id-11134207-7rasl-m3np4d4bhwt458.webp", main: "https://down-id.img.susercontent.com/file/id-11134207-7rasl-m3np4d4bhwt458.webp" },
-            { name: "Khaki", thumbnail: "https://down-id.img.susercontent.com/file/id-11134207-7ras9-m3np4d4bjbdka1.webp", main: "https://down-id.img.susercontent.com/file/id-11134207-7ras9-m3np4d4bjbdka1.webp" },
-            { name: "Lilac", thumbnail: "https://down-id.img.susercontent.com/file/id-11134207-7rash-m3np4d4bkpy0fa.webp", main: "https://down-id.img.susercontent.com/file/id-11134207-7rash-m3np4d4bkpy0fa.webp" },
-            { name: "Ash", thumbnail: "https://down-id.img.susercontent.com/file/id-11134207-7rasj-m3np4d4bm4ig53.webp", main: "https://down-id.img.susercontent.com/file/id-11134207-7rasj-m3np4d4bm4ig53.webp" },
-            { name: "Millo", thumbnail: "https://down-id.img.susercontent.com/file/id-11134207-7rasl-m3np4d4boxncb6.webp", main: "https://down-id.img.susercontent.com/file/id-11134207-7rasl-m3np4d4boxncb6.webp" },
-            { name: "Silver", thumbnail: "https://down-id.img.susercontent.com/file/id-11134207-7rasi-m3np4d4bqc7se1.webp", main: "https://down-id.img.susercontent.com/file/id-11134207-7rasi-m3np4d4bqc7se1.webp" },
-            { name: "Abu Tua", thumbnail: "https://down-id.img.susercontent.com/file/id-11134207-7ras8-m3np4d4brqs8de.webp", main: "https://down-id.img.susercontent.com/file/id-11134207-7ras8-m3np4d4brqs8de.webp" },
-            { name: "Kubus", thumbnail: "https://down-id.img.susercontent.com/file/id-11134207-7rasm-m3npcl8s1cyi29.webp", main: "https://down-id.img
+    </script>
 </body>
 </html>
